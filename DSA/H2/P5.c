@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct _USB {
     long long int id;
     long long int group;
-    USB *prev;
-    USB *next;
+    struct _USB *prev;
+    struct _USB *next;
 } USB;
 
 typedef struct _ROOM {
@@ -16,6 +17,7 @@ typedef struct _ROOM {
 } ROOM;
 
 int Room_add_user(ROOM *r, USB *u){
+    
     //if r->first 不存在
         // init r->first = r->last = u
         // return
@@ -61,6 +63,36 @@ int Room_close(ROOM *r, ROOM *r1)
 
 int main()
 {
+    int M,N,K;
+    char cmd[32];
+    int i,j,m;
+
+    scanf("%d%d%d",&M,&N,&K);  //Room, Lines and Group. 
+
+    ROOM BRoom[M];  //
+    for (int in=0; in< N; in++) {
+        scanf("%s",cmd);
+
+        if (!strcmp(cmd,"enter")) {
+            scanf("%d%d%d",&i,&j,&m);
+            printf("repeat:enter %d %d %d\n",i,j,m);
+        }
+
+        if (!strcmp(cmd,"leave")) {
+            scanf("%d",&m);
+            printf("repeat:leave %d\n",m);
+        }
+
+        if (!strcmp(cmd,"go")) {
+            scanf("%d",&m);
+            printf("repeat:go %d\n",m);
+        }
+        if (!strcmp(cmd,"close")) {
+            scanf("%d",&m);
+            printf("repeat:close %d\n",m);
+        }
+    }
+
     //scanf M,N,K
     // Init Room stucture (M). 
 
