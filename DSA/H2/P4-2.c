@@ -63,12 +63,12 @@ long long int do_op (int op_no,long long int num,long long num2)
 long long int calculate (ENTRY in[], int in_top, ENTRY stack[], int s_top)
 {
     int intop = in_top;
-    int stop = s_top;1
+    int stop = s_top;
     long long int num, num2;
     int op_no;
 
- //   for (int i=0;i<=in_top;i++) 
- //       printf("[%c:%lld]\n",op_char[in[i].op_no],in[i].num);
+  //  for (int i=0;i<=in_top;i++) 
+  //      printf("[%c:%lld]\n",op_char[in[i].op_no],in[i].num);
 
     for (int i=0;i<=in_top;i++) {
         pop (&in[i], &op_no, &num);
