@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #define MAX_OP_NUM  9
-#define MAXLEN      10000
+#define MAXLEN      1000
 
 typedef struct _entry {
     int op_no;
@@ -87,7 +87,7 @@ long long int calculate (ENTRY in[], int in_top, ENTRY stack[], int s_top)
 
 void main()
 {
-    ENTRY stack[10000], out[MAXLEN];
+    ENTRY stack[MAXLEN], out[MAXLEN];
     int  s_top=-1, out_top=-1;
     char c;
     long long int num, temp=0; 
