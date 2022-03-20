@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #define MAX_OP_NUM  9
-#define MAXLEN      100000
+#define MAXLEN      10000
 
 typedef struct _entry {
     int op_no;
@@ -48,7 +48,15 @@ long long int do_op (int op_no,long long int num, long long int num2)
         ret = num * num2;
         break;
     case '/'/* constant-expression */:
-        ret = num /num2;
+        if ((num>0)&&(num2<0)) {
+            num = (-num);
+            num2 = (-num2);
+        }
+        if ((num<0)&&(num2>0)) {
+            ret = (num - (num2-1)) / num2;
+        } else {
+            ret = num / num2;
+        }
         break;
     case '%'/* constant-expression */:
         ret = num % num2;
@@ -90,7 +98,7 @@ void main()
     long long int num, temp=0; 
     int prev_mode=OP_MODE, cop_no;
  
-    while ((c=getchar())!=EOF) {
+    while ((c=getchar())!='\n') {
         if (isdigit(c)) {
             temp = temp * 10 + c - '0';
             prev_mode = NUM_MODE;
