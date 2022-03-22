@@ -7,12 +7,22 @@ typedef struct _USB {
     struct _USB *prev;
     struct _USB *next;
 } USB;
+
+typedef struct _GROUP {
+    long long int group;
+    struct _USB     *first;
+    USB             *last;
+    struct _GROUP   *prev;
+    struct _GROUP   *next;
+} GROUP;
+
 typedef struct _ROOM {
     int state;  //open(1) or close(0)
-    USB *first;
-    USB *last;
+    GROUP *first;
+    GROUP *last;
     int no;
 } ROOM;
+
 void Room_add_user(ROOM *r, USB *u)
 {
     USB *ptr, *prev_ptr ;
