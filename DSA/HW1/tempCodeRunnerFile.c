@@ -1,0 +1,1 @@
+r->first_grp=r->last_grp=g;
